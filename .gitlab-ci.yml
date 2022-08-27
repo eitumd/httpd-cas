@@ -18,4 +18,4 @@ build nginxCAS:
   script:
     ## Build & push the deployer image to the registry
     - docker build -f $CI_PROJECT_DIR/Dockerfile -t $CI_REGISTRY/eit/development/saas/nginx-cas/nginxcas:latest . --no-cache
-    - docker push $CI_REGISTRY/eit/development/saas/nginx-cas/nginx:latest
+    - docker push $CI_REGISTRY/eit/development/saas/nginx-cas/nginxcas:latest
