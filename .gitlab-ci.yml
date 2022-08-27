@@ -1,0 +1,21 @@
+variables:
+  # When using dind, it's wise to use the overlayfs driver for
+  # improved performance.
+  DOCKER_DRIVER: overlay2
+services:
+  - docker:dind
+before_script:
+  - docker login -u $CI_REGISTRY_USER -p $CI_JOB_TOKEN $CI_REGISTRY
+  - docker info
+
+stages:
+  - build
+
+build nginxCAS:
+  image: docker:dind
+  stage: build
+  when: always
+  script:
+    ## Build & push the deployer image to the registry
+    - docker build -f $CI_PROJECT_DIR/Dockerfile -t $CI_REGISTRY/eit/development/saas/nginx-cas/nginxcas:latest . --no-cache
+    - docker push $CI_REGISTRY/eit/development/saas/nginx-cas/nginx:latest
