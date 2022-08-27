@@ -1,4 +1,4 @@
-FROM nginx:latest
+FROM ubuntu/nginx:latest
 
 # Install dependencies
 RUN apt install libnginx-mod-http-lua
