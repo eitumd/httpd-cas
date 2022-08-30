@@ -8,7 +8,6 @@ RUN apt-get update \
 WORKDIR /
 RUN wget https://github.com/apereo/mod_auth_cas/archive/refs/tags/v1.2.tar.gz \
     && tar -xvzf v1.2.tar.gz
-RUN pwd && ls
 RUN cd /mod_auth_cas-1.2 \
     && autoreconf -iv \
     && ./configure --with-apxs=/usr/local/apache2/bin/apxs \
