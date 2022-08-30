@@ -1,4 +1,4 @@
-FROM openresty/openresty:latest
+FROM openresty/openresty:buster-fat
 
 # Install dependencies
 #RUN apt-get update
