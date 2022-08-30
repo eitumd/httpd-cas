@@ -17,3 +17,5 @@ RUN wget https://raw.githubusercontent.com/prigaux/nginx-auth-cas-lua/master/src
 # Configure cas_uri for UMD CAS
 RUN sed -i 's+https://cas.univ.fr/cas+https://shib.idm.umd.edu/shibboleth-idp/profile/cas+g' global_cas_conf.lua
 RUN cat global_cas_conf.lua
+
+CMD ["/usr/local/openresty/bin/openresty", "-g", "daemon off;"]
