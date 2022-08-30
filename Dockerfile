@@ -1,8 +1,8 @@
 FROM openresty/openresty:buster-fat
 
 # Install dependencies
-#RUN apt-get update
-#RUN apt-get install wget libnginx-mod-http-lua -y
+RUN apt-get update
+RUN apt-get install wget -y
 RUN mkdir -p /etc/nginx/lua/resty
 RUN cd /etc/nginx/lua/resty/
 RUN wget https://raw.githubusercontent.com/ledgetech/lua-resty-http/master/lib/resty/http_headers.lua
