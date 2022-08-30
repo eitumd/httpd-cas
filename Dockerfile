@@ -26,7 +26,15 @@ RUN apt-get remove -y wget dh-autoreconf libapr1-dev libaprutil1-dev libssl-dev 
 RUN sed -i '/httpd-vhosts.conf/s/^#//g' /usr/local/apache2/conf/httpd.conf
 
 ## Load modules
-RUN echo "LoadModule proxy_module /usr/local/apache2/modules/mod_proxy.so" >> /usr/local/apache2/conf/httpd.conf
-RUN echo "LoadModule proxy_http_module /usr/local/apache2/modules/mod_proxy_http.so" >> /usr/local/apache2/conf/httpd.conf
-RUN echo "LoadModule rewrite_module /usr/local/apache2/modules/mod_rewrite.so" >> /usr/local/apache2/conf/httpd.conf
-RUN echo "LoadModule auth_cas_module /usr/local/apache2/modules/mod_auth_cas.so" >> /usr/local/apache2/conf/httpd.conf
+RUN echo "## Load Extra Modules ##" \
+    && echo "LoadModule proxy_module /usr/local/apache2/modules/mod_proxy.so" >> /usr/local/apache2/conf/httpd.conf \
+    && echo "LoadModule proxy_http_module /usr/local/apache2/modules/mod_proxy_http.so" >> /usr/local/apache2/conf/httpd.conf \
+    && echo "LoadModule rewrite_module /usr/local/apache2/modules/mod_rewrite.so" >> /usr/local/apache2/conf/httpd.conf \
+    && echo "LoadModule auth_cas_module /usr/local/apache2/modules/mod_auth_cas.so" >> /usr/local/apache2/conf/httpd.conf
+
+# Add CAS config
+RUN mkdir /var/cache/apache2/mod_auth_cas \
+    && echo "## CAS Config ##" \
+    && echo "CASCookiePath /var/cache/apache2/mod_auth_cas/" >> /usr/local/apache2/conf/httpd.conf \
+    && echo "CASLoginURL https://shib.idm.umd.edu/shibboleth-idp/profile/cas/login" >> /usr/local/apache2/conf/httpd.conf \
+    && echo "CASValidateURL https://shib.idm.umd.edu/shibboleth-idp/profile/cas/serviceValidate" >> /usr/local/apache2/conf/httpd.conf
