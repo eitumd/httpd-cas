@@ -15,5 +15,5 @@ RUN wget https://raw.githubusercontent.com/prigaux/nginx-auth-cas-lua/master/src
 RUN wget https://raw.githubusercontent.com/prigaux/nginx-auth-cas-lua/master/src/global_cas_conf.lua
 
 # Configure cas_uri for UMD CAS
-sed -i 's/"https://cas.univ.fr/cas"/"https://shib.idm.umd.edu/shibboleth-idp/profile/cas"/g' global_cas_conf.lua
+sed -i 's+https://cas.univ.fr/cas+https://shib.idm.umd.edu/shibboleth-idp/profile/cas+g' global_cas_conf.lua
 sed more global_cas_conf.lua
