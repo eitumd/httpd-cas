@@ -9,6 +9,7 @@ WORKDIR /cas
 RUN wget https://github.com/apereo/mod_auth_cas/archive/refs/tags/v1.2.tar.gz \
     && tar -xvzf v1.2.tar.gz \
     && cd mod_auth_cas-1.2
+RUN pwd
 RUN autoreconf -iv \
     && ./configure --with-apxs=/usr/local/apache2/bin/apxs \
     && make \
