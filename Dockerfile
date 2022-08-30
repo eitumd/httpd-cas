@@ -1,7 +1,8 @@
 FROM httpd:2.4
 
 ## Install build dependencies
-RUN apt-get install -y wget
+RUN apt-get update \
+    && apt-get install -y wget
 
 ## Download CAS module & configure
 RUN wget https://github.com/apereo/mod_auth_cas/archive/refs/tags/v1.2.tar.gz \
