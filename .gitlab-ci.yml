@@ -11,11 +11,11 @@ before_script:
 stages:
   - build
 
-build nginxCAS:
+build httpdCAS:
   image: docker:dind
   stage: build
   when: always
   script:
     ## Build & push the deployer image to the registry
-    - docker build -f $CI_PROJECT_DIR/Dockerfile -t $CI_REGISTRY/eit/development/saas/nginx-cas/nginxcas:latest . --no-cache
-    - docker push $CI_REGISTRY/eit/development/saas/nginx-cas/nginxcas:latest
+    - docker build -f $CI_PROJECT_DIR/Dockerfile -t $CI_REGISTRY/eit/development/saas/httpd-cas/httpd:latest . --no-cache
+    - docker push $CI_REGISTRY/eit/development/saas/httpd-cas/httpd:latest
