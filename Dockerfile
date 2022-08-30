@@ -33,7 +33,7 @@ RUN echo "## Load Extra Modules ##" >> /usr/local/apache2/conf/httpd.conf \
     && echo "LoadModule auth_cas_module /usr/local/apache2/modules/mod_auth_cas.so" >> /usr/local/apache2/conf/httpd.conf
 
 # Add CAS config
-RUN mkdir /var/cache/apache2/mod_auth_cas \
+RUN mkdir -p /var/cache/apache2/mod_auth_cas \
     && echo "## CAS Config ##" >> /usr/local/apache2/conf/httpd.conf \
     && echo "CASCookiePath /var/cache/apache2/mod_auth_cas/" >> /usr/local/apache2/conf/httpd.conf \
     && echo "CASLoginURL https://shib.idm.umd.edu/shibboleth-idp/profile/cas/login" >> /usr/local/apache2/conf/httpd.conf \
