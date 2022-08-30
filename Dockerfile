@@ -8,6 +8,6 @@ RUN apt-get -y install libapache2-mod-auth-cas
 RUN sed -i '/httpd-vhosts.conf/s/^#//g' /usr/local/apache2/conf/httpd.conf
 
 ## Load modules
-RUN echo "LoadModule mod_proxy /usr/lib/apache2/mod_proxy" >> /usr/local/apache2/conf/httpd.conf
-RUN echo "LoadModule mod_proxy_http /usr/lib/apache2/mod_proxy_http" >> /usr/local/apache2/conf/httpd.conf
-RUN echo "LoadModule mod_rewrite /usr/lib/apache2/mod_rewrite" >> /usr/local/apache2/conf/httpd.conf
+RUN echo "LoadModule mod_proxy /usr/lib/apache2/modules/mod_proxy" >> /usr/local/apache2/conf/httpd.conf
+RUN echo "LoadModule mod_proxy_http /usr/lib/apache2/modules/mod_proxy_http" >> /usr/local/apache2/conf/httpd.conf
+RUN echo "LoadModule mod_rewrite /usr/lib/apache2/modules/mod_rewrite" >> /usr/local/apache2/conf/httpd.conf
