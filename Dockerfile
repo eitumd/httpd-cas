@@ -15,11 +15,12 @@ RUN cd /mod_auth_cas-1.2 \
     && make \
     && make install
 
-## Remove build dependencies
+## Remove build dependencies & other build files
 RUN apt-get remove -y wget dh-autoreconf libapr1-dev libaprutil1-dev libssl-dev libcurl4-openssl-dev libpcre3-dev build-essential \
     && apt-get -y autoremove \
     && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && rm -rf /mod_auth_cas-1.2
 
 ## Uncomment httpd-vhosts.conf in extras to enable custom vhost support
 RUN sed -i '/httpd-vhosts.conf/s/^#//g' /usr/local/apache2/conf/httpd.conf
