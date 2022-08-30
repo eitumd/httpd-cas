@@ -2,6 +2,16 @@
 
 Adds CAS support to nginx, similar to Apache's mod_auth_cas.
 
+## Parameters
+
+| Parameter |	Description |
+| --------- | ----------- |
+| `-e TZ=UTC`	| Timezone. |
+| `-p 8080:80` | Expose Nginx on localhost:8080. |
+| `-v /local/path/to/website:/var/www/html` |	Mount and serve a local website. |
+| `-v /path/to/conf.template:/etc/nginx/templates/conf.template` |	Mount template files inside /etc/nginx/templates. They will be processed and the results will be placed at /etc/nginx/conf.d. (e.g. listen ${NGINX_PORT}; will generate listen 80;). |
+| `-v /path/to/nginx.conf:/etc/nginx/nginx.conf` |	Local configuration file nginx.conf (try this example). |
+
 # Configuration
 
 * Configuration needed in global nginx config (mapped in per project usually)
