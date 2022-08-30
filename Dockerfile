@@ -37,3 +37,4 @@ RUN mkdir -p /var/cache/apache2/mod_auth_cas \
     && echo "CASCookiePath /var/cache/apache2/mod_auth_cas/" >> /usr/local/apache2/conf/httpd.conf \
     && echo "CASLoginURL https://shib.idm.umd.edu/shibboleth-idp/profile/cas/login" >> /usr/local/apache2/conf/httpd.conf \
     && echo "CASValidateURL https://shib.idm.umd.edu/shibboleth-idp/profile/cas/serviceValidate" >> /usr/local/apache2/conf/httpd.conf
+    && echo "CASRootProxiedAs ${CAS_SERVICE_URI}" >> /usr/local/apache2/conf/httpd.conf
