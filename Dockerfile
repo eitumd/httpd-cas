@@ -29,7 +29,8 @@ RUN echo "## Load Extra Modules ##" >> /usr/local/apache2/conf/httpd.conf \
     && echo "LoadModule proxy_module /usr/local/apache2/modules/mod_proxy.so" >> /usr/local/apache2/conf/httpd.conf \
     && echo "LoadModule proxy_http_module /usr/local/apache2/modules/mod_proxy_http.so" >> /usr/local/apache2/conf/httpd.conf \
     && echo "LoadModule rewrite_module /usr/local/apache2/modules/mod_rewrite.so" >> /usr/local/apache2/conf/httpd.conf \
-    && echo "LoadModule auth_cas_module /usr/local/apache2/modules/mod_auth_cas.so" >> /usr/local/apache2/conf/httpd.conf
+    && echo "LoadModule auth_cas_module /usr/local/apache2/modules/mod_auth_cas.so" >> /usr/local/apache2/conf/httpd.conf \
+    && echo "LoadModule headers_module /usr/local/apache2/modules/mod_headers.so" >> /usr/local/apache2/conf/httpd.conf
 
 # Add CAS config
 RUN mkdir -p /var/cache/apache2/mod_auth_cas \
