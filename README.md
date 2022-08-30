@@ -4,8 +4,7 @@ Adds CAS support to nginx, similar to Apache's mod_auth_cas.
 
 # Configuration
 
-* configure `cas_uri` in /etc/nginx/lua/global_cas_conf.lua
-* configure various global stuff in nginx config
+* Configuration needed in global nginx config (mapped in per project usually)
 
 ```
 # needed for resty.http
