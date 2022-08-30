@@ -2,7 +2,7 @@ FROM httpd:2.4
 
 ## Install build dependencies
 RUN apt-get update \
-    && apt-get install -y wget dh-autoreconf libapr1-dev libaprutil1-dev
+    && apt-get install -y wget dh-autoreconf libapr1-dev libaprutil1-dev libcurl4-openssl-dev
 
 ## Download CAS module & configure
 WORKDIR /
