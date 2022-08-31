@@ -2,7 +2,7 @@
 
 Bundles [mod_auth_cas (version 1.2)](https://github.com/apereo/mod_auth_cas/releases/tag/v1.2) with the official Apache container on Docker Hub ([httpd:2.4](https://hub.docker.com/_/httpd)).
 
-This repository is mirrored to GitHub at [https://github.com/eitumd/httpd-cas](https://github.com/eitumd/httpd-cas)
+This repository is mirrored to GitHub at [https://github.com/eitumd/httpd-cas](https://github.com/eitumd/httpd-cas) & the image is on Docker Hub at [eitumd/httpdcas](https://hub.docker.com/r/eitumd/httpdcas).
 
 ## How to use
 
