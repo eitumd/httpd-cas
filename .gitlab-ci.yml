@@ -11,7 +11,7 @@ before_script:
 stages:
   - build
 
-build & push GitLab:
+build/push GitLab:
   image: docker:dind
   stage: build
   when: manual
@@ -20,7 +20,7 @@ build & push GitLab:
     - docker build -f $CI_PROJECT_DIR/Dockerfile -t $CI_REGISTRY/eit/development/saas/httpd-cas/httpd:latest . --no-cache
     - docker push $CI_REGISTRY/eit/development/saas/httpd-cas/httpd:latest
 
-build & push Docker Hub:
+build/push Docker Hub:
   image: docker:dind
   stage: build
   when: manual
@@ -30,3 +30,16 @@ build & push Docker Hub:
     ## Build & push the deployer image to the registry
     - docker build -f $CI_PROJECT_DIR/Dockerfile -t eitumd/httpdcas:latest . --no-cache
     - docker push eitumd/httpdcas:latest
+
+build/push Docker Hub auto:
+  image: docker:dind
+  stage: build
+  before_script:
+    - docker login -u engineeringit -p $DOCKER_HUB_TOKEN
+  script:
+    ## Build & push the deployer image to the registry
+    - docker build -f $CI_PROJECT_DIR/Dockerfile -t eitumd/httpdcas:latest . --no-cache
+    - docker push eitumd/httpdcas:latest
+  only:
+    - main
+    - schedules
