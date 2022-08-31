@@ -14,7 +14,7 @@ stages:
 build httpdCAS:
   image: docker:dind
   stage: build
-  when: always
+  when: manual
   script:
     ## Build & push the deployer image to the registry
     - docker build -f $CI_PROJECT_DIR/Dockerfile -t $CI_REGISTRY/eit/development/saas/httpd-cas/httpd:latest . --no-cache

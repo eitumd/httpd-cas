@@ -2,7 +2,7 @@
 
 Adds mod_auth_cas to the official Apache container on Docker Hub ([httpd](https://hub.docker.com/_/httpd)).
 
-This repository is mirrored to GitHub at [https://github.com/eitumd/httpd-cas](https://github.com/eitumd/httpd-cas).
+This repository is mirrored to GitHub at [https://github.com/eitumd/httpd-cas](https://github.com/eitumd/httpd-cas)
 
 ## How to use
 
@@ -106,3 +106,6 @@ You can then COPY your custom configuration in as /usr/local/apache2/conf/httpd.
 FROM registry.code.umd.edu/eit/development/saas/httpd-cas/httpd:latest
 COPY ./my-httpd.conf /usr/local/apache2/conf/httpd.conf
 ```
+
+## OSS Todos
+- [ ] Allow `CASLoginURL` & `CASValidiateURL` to be set as environment variables on the container (enables use at other institutions without forking).
