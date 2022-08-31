@@ -2,6 +2,8 @@
 
 Adds mod_auth_cas to the official Apache container on Docker Hub ([httpd](https://hub.docker.com/_/httpd)).
 
+This repository is mirrored to GitHub at [https://github.com/eitumd/httpd-cas](https://github.com/eitumd/httpd-cas).
+
 ## How to use
 
 1. Bind or volume mount a custom `httpd-vhosts.conf` file to `/usr/local/apache2/conf/extra/httpd-vhosts.conf` to configure virtual hosts.
