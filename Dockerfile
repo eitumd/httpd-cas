@@ -1,5 +1,9 @@
 FROM httpd:2.4
 
+## Set envs
+ENV CAS_LOGIN_URL https://shib.idm.umd.edu/shibboleth-idp/profile/cas/login
+ENV CAS_VALIDATE_URL https://shib.idm.umd.edu/shibboleth-idp/profile/cas/serviceValidate
+
 ## Install build dependencies
 RUN apt-get update \
     && apt-get install -y wget dh-autoreconf libapr1-dev libaprutil1-dev libssl-dev libcurl4-openssl-dev libpcre3-dev build-essential
