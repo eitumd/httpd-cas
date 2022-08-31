@@ -6,6 +6,7 @@ ENV CAS_VALIDATE_URL https://shib.idm.umd.edu/shibboleth-idp/profile/cas/service
 
 ## Install build dependencies
 RUN apt-get update \
+    && apt-get upgrade -y \
     && apt-get install -y wget dh-autoreconf libapr1-dev libaprutil1-dev libssl-dev libcurl4-openssl-dev libpcre3-dev build-essential
 
 ## Download CAS module & configure
@@ -23,8 +24,7 @@ RUN apt-get remove -y wget dh-autoreconf libapr1-dev libaprutil1-dev libssl-dev 
     && apt-get -y autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
-    && rm -rf /mod_auth_cas-1.2 \
-    && apt-get update
+    && rm -rf /mod_auth_cas-1.2
 
 ## Uncomment httpd-vhosts.conf in extras to enable custom vhost support
 RUN sed -i '/httpd-vhosts.conf/s/^#//g' /usr/local/apache2/conf/httpd.conf
