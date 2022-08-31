@@ -113,4 +113,5 @@ COPY ./my-httpd.conf /usr/local/apache2/conf/httpd.conf
 
 ## OSS Todos
 - [x] Allow `CASLoginURL` & `CASValidiateURL` to be set as environment variables on the container (enables use at other institutions without forking).
-- [x] Add GitHub build for docker image (available on Docker Hub now, but there are rate limits).
+- [x] Add image to Docker Hub.
+- [ ] Add GitHub build for docker image (available on Docker Hub now, but there are rate limits).
