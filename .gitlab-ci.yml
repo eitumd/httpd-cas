@@ -11,7 +11,7 @@ before_script:
 stages:
   - build
 
-build httpdCAS:
+build & push GitLab:
   image: docker:dind
   stage: build
   when: manual
@@ -19,3 +19,14 @@ build httpdCAS:
     ## Build & push the deployer image to the registry
     - docker build -f $CI_PROJECT_DIR/Dockerfile -t $CI_REGISTRY/eit/development/saas/httpd-cas/httpd:latest . --no-cache
     - docker push $CI_REGISTRY/eit/development/saas/httpd-cas/httpd:latest
+
+build & push GitHub:
+  image: docker:dind
+  stage: build
+  when: manual
+  before_script:
+    - docker login -u engineeringit -p $DOCKER_HUB_TOKEN
+  script:
+    ## Build & push the deployer image to the registry
+    - docker build -f $CI_PROJECT_DIR/Dockerfile -t $CI_REGISTRY/eit/development/saas/httpd-cas/httpd:latest . --no-cache
+    - docker push httpdcas:latest

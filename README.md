@@ -1,14 +1,15 @@
 # httpdCAS
 
-Adds mod_auth_cas to the official Apache container on Docker Hub ([httpd](https://hub.docker.com/_/httpd)).
+Bundles [mod_auth_cas (version 1.2)](https://github.com/apereo/mod_auth_cas/releases/tag/v1.2) with the official Apache container on Docker Hub ([httpd:2.4](https://hub.docker.com/_/httpd)).
 
 This repository is mirrored to GitHub at [https://github.com/eitumd/httpd-cas](https://github.com/eitumd/httpd-cas)
 
 ## How to use
 
-1. Bind or volume mount a custom `httpd-vhosts.conf` file to `/usr/local/apache2/conf/extra/httpd-vhosts.conf` to configure virtual hosts.
-2. Bind or volume mount your `DocumentRoot` to `/usr/local/apache2/htdocs` on the container.
-3. The `mod_proxy` & `mod_proxy_http` modules are enabled by default & can be used to configure `ProxyPass` directives in your virtual host configuration.
+1. Set the `CAS_LOGIN_URL` & `CAS_VALIDATE_URL` environment variables for your respective institution (they default to UMD's shib config).
+2. (optional) Bind or volume mount a custom `httpd-vhosts.conf` file to `/usr/local/apache2/conf/extra/httpd-vhosts.conf` to configure virtual hosts.
+3. Bind or volume mount your `DocumentRoot` to `/usr/local/apache2/htdocs` on the container.
+4. The `mod_proxy` & `mod_proxy_http` modules are enabled by default & can be used to configure `ProxyPass` directives in your virtual host configuration.
 
 ### Sample docker-compose
 
@@ -17,6 +18,9 @@ version: '3.9'
 services:
   httpd:
     image: registry.code.umd.edu/eit/development/saas/httpd-cas/httpd:latest
+    environment:
+      - CAS_LOGIN_URL=https://login.institution.edu/cas/login
+      - CAS_VALIDATE_URL=https://login.institution.edu/cas/serviceValidate
     restart: always
     ports:
       - 8080:80
@@ -108,4 +112,5 @@ COPY ./my-httpd.conf /usr/local/apache2/conf/httpd.conf
 ```
 
 ## OSS Todos
-- [ ] Allow `CASLoginURL` & `CASValidiateURL` to be set as environment variables on the container (enables use at other institutions without forking).
+- [x] Allow `CASLoginURL` & `CASValidiateURL` to be set as environment variables on the container (enables use at other institutions without forking).
+- [ ] Add GitHub build for docker image (available on Docker Hub now, but there are rate limits).
