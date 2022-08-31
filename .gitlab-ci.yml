@@ -20,7 +20,7 @@ build & push GitLab:
     - docker build -f $CI_PROJECT_DIR/Dockerfile -t $CI_REGISTRY/eit/development/saas/httpd-cas/httpd:latest . --no-cache
     - docker push $CI_REGISTRY/eit/development/saas/httpd-cas/httpd:latest
 
-build & push GitHub:
+build & push Docker Hub:
   image: docker:dind
   stage: build
   when: manual
@@ -28,5 +28,5 @@ build & push GitHub:
     - docker login -u engineeringit -p $DOCKER_HUB_TOKEN
   script:
     ## Build & push the deployer image to the registry
-    - docker build -f $CI_PROJECT_DIR/Dockerfile -t $CI_REGISTRY/eit/development/saas/httpd-cas/httpd:latest . --no-cache
+    - docker build -f $CI_PROJECT_DIR/Dockerfile -t engineeringit/httpdcas:latest . --no-cache
     - docker push engineeringit/httpdcas:latest
