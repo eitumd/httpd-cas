@@ -23,10 +23,8 @@ RUN apt-get remove -y wget dh-autoreconf libapr1-dev libaprutil1-dev libssl-dev 
     && apt-get -y autoremove \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/* \
-    && rm -rf /mod_auth_cas-1.2
-
-## Upgrade packages
-RUN apt-get upgrade -y
+    && rm -rf /mod_auth_cas-1.2 \
+    && apt-get update
 
 ## Uncomment httpd-vhosts.conf in extras to enable custom vhost support
 RUN sed -i '/httpd-vhosts.conf/s/^#//g' /usr/local/apache2/conf/httpd.conf
