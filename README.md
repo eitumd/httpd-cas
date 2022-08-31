@@ -17,7 +17,7 @@ This repository is mirrored to GitHub at [https://github.com/eitumd/httpd-cas](h
 version: '3.9'
 services:
   httpd:
-    image: registry.code.umd.edu/eit/development/saas/httpd-cas/httpd:latest
+    image: engineeringit/httpdcas:latest
     environment:
       - CAS_LOGIN_URL=https://login.institution.edu/cas/login
       - CAS_VALIDATE_URL=https://login.institution.edu/cas/serviceValidate
@@ -113,4 +113,4 @@ COPY ./my-httpd.conf /usr/local/apache2/conf/httpd.conf
 
 ## OSS Todos
 - [x] Allow `CASLoginURL` & `CASValidiateURL` to be set as environment variables on the container (enables use at other institutions without forking).
-- [ ] Add GitHub build for docker image (available on Docker Hub now, but there are rate limits).
+- [x] Add GitHub build for docker image (available on Docker Hub now, but there are rate limits).
