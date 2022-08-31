@@ -29,4 +29,4 @@ build & push GitHub:
   script:
     ## Build & push the deployer image to the registry
     - docker build -f $CI_PROJECT_DIR/Dockerfile -t $CI_REGISTRY/eit/development/saas/httpd-cas/httpd:latest . --no-cache
-    - docker push httpdcas:latest
+    - docker push engineeringit/httpdcas:latest
