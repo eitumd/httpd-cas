@@ -28,5 +28,5 @@ build & push Docker Hub:
     - docker login -u engineeringit -p $DOCKER_HUB_TOKEN
   script:
     ## Build & push the deployer image to the registry
-    - docker build -f $CI_PROJECT_DIR/Dockerfile -t engineeringit/httpdcas:latest . --no-cache
-    - docker push engineeringit/httpdcas:latest
+    - docker build -f $CI_PROJECT_DIR/Dockerfile -t eitumd/httpdcas:latest . --no-cache
+    - docker push eitumd/httpdcas:latest

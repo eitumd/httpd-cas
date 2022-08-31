@@ -17,7 +17,7 @@ This repository is mirrored to GitHub at [https://github.com/eitumd/httpd-cas](h
 version: '3.9'
 services:
   httpd:
-    image: engineeringit/httpdcas:latest
+    image: eitumd/httpdcas:latest
     environment:
       - CAS_LOGIN_URL=https://login.institution.edu/cas/login
       - CAS_VALIDATE_URL=https://login.institution.edu/cas/serviceValidate
